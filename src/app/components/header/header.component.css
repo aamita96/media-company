@@ -1,0 +1,10 @@
+.error{
+  color:#be4b49;
+}
+.nav-item span{
+  color:#fff;
+  margin-right: 20px;
+}
+input.ng-invalid.ng-touched.ng-dirty{
+  border: 1px solid red;
+}

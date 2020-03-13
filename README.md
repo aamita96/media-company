@@ -1,6 +1,6 @@
 # MediaCompany
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20 and uses latest angular 9.0.5.
 
 ## Development server
 
@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Libraries
+This project uses ng-bootstrap and bootstrap@4 version for making user interface attactive.
+
+## Project Setup
+Run `git clone <repository-url>` to clone the project. Now move to the cloned repository and run `npm install or npm i` for node_modules packages to run locally.  

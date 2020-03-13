@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" routerLink="/home">Media Company</a>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a class="nav-link" routerLink="/home">Home</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn$ | async">
+      <a class="nav-link" routerLink="/gallery">Gallery</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" routerLink="/about">About</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav">
+    <ng-template #login>
+      <li class="nav-item">
+        <div class="btn btn-primary" (click)="openLg(content)">
+          Login
+        </div>
+      </li>
+    </ng-template>
+    <li class="nav-item" *ngIf="isLoggedIn$ | async; else login">
+      <span>{{'Welcome '+user?.userid}}</span>
+      <div class="btn btn-primary" (click)="logout()">
+        Logout
+      </div>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- Login Modal HTML -->
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Login Modal</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="loginForm">
+      <ngb-alert type="danger" *ngIf="staticAlertClosed" (close)="staticAlertClosed = false">Email or password is
+        invalid!</ngb-alert>
+      <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" placeholder="Enter email" formControlName="userid">
+      </div>
+      <div class="error" *ngIf="loginForm.controls.userid.invalid && loginForm.controls.userid.touched">
+        * Please enter a valid email!
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" placeholder="Enter password" formControlName="password">
+      </div>
+      <div class="error" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
+        * This field is required!
+      </div>
+      <button (click)="logMeIn()" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+    </form>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div> -->
+</ng-template>
